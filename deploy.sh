@@ -7,6 +7,7 @@ echo "token = ${TOKEN}" > config.txt
 echo "owner = ${OWNER}" >> config.txt
 echo "prefix = \"!\"" >> config.txt
 
+docker stop jmusicbot
 docker rm $(docker ps -a -q -f status=exited)
 docker build --rm -t jmusicbot .
 docker run -d --name jmusicbot jmusicbot
