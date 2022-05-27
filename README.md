@@ -1,3 +1,7 @@
 # j-music-bot-deploy
 
-Attempt to make an automated deployment procedure
+Deploys j-music-bot. Follows [this tutorial](https://jmusicbot.com/setup)
+
+## How to run
+
+Have docker daemon running and run `./deploy.sh`.
