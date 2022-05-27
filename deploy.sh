@@ -8,4 +8,4 @@ echo "owner = ${OWNER}" >> config.txt
 echo "prefix = \"!\"" >> config.txt
 
 docker build --rm -t jmusicbot .
-docker run jmusicbot
+docker run jmusicbot -d
