@@ -1,11 +1,10 @@
 #/bin/bash
 
-export TOKEN=$(gcloud secrets versions access latest --secret=j-music-bot-token)
-export OWNER=$(gcloud secrets versions access latest --secret=j-music-bot-owner)
+JBOT_VERSION=$1
 
-echo "$(envsubst < config_base.txt)" > config.txt
+docker-compose build \
+--build-arg JBOT_VERSION=${JBOT_VERSION} \
+--build-arg TOKEN=$(gcloud secrets versions access latest --secret=j-music-bot-token) \
+--build-arg OWNER=$(gcloud secrets versions access latest --secret=j-music-bot-owner)
 
-docker stop jmusicbot
-docker rm $(docker ps -a -q -f status=exited)
-docker build --rm -t jmusicbot .
-docker run -d --name jmusicbot jmusicbot
+docker-compose up -d

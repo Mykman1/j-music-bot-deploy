@@ -1,0 +1,8 @@
+version: '3'
+services:
+  jmusicbot:
+    build: .
+    command: java -Dnogui=true -jar JMusicBot.jar
+    container_name: jmusicbot
+    ports:
+      - "443:443"
