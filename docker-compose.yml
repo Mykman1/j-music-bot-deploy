@@ -2,7 +2,17 @@ version: "3"
 services:
   jmusicbot:
     build: .
-    command: java -Dnogui=true -jar JMusicBot.jar
+    command: ./jmusicbot.sh
     container_name: jmusicbot
     ports:
       - 443:443
+    secrets:
+      - source: token
+        target: token
+      - source: owner
+        target: owner
+secrets:
+  token:
+    environment: "TOKEN"
+  owner:
+    environment: "OWNER"
