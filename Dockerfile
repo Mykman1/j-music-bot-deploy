@@ -2,12 +2,16 @@ FROM alpine
 
 RUN apk add --no-cache \
     envsubst \
+    jq \
     openjdk17-jre-headless
 
 WORKDIR /jbot
 
 ARG JBOT_VERSION
-RUN wget -c "https://github.com/jagrosh/MusicBot/releases/download/${JBOT_VERSION}/JMusicBot-${JBOT_VERSION}.jar" -O JMusicBot.jar
+RUN wget \
+    -c $(wget -qO- https://api.github.com/repos/jagrosh/MusicBot/releases/latest \
+            | jq -r .assets[].browser_download_url) \
+    -O JMusicBot.jar
 
 COPY config.txt jmusicbot.sh ./
 RUN chmod +x jmusicbot.sh
