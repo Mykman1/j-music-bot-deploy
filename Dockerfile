@@ -1,7 +1,7 @@
 FROM alpine
 
 RUN apk add --no-cache \
-    bash \
+    envsubst \
     openjdk17-jre-headless
 
 WORKDIR /jbot

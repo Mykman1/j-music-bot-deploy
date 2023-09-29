@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 TOKEN="$(cat /run/secrets/token)"
 OWNER="$(cat /run/secrets/owner)"
