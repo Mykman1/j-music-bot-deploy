@@ -7,7 +7,6 @@ RUN apk add --no-cache \
 
 WORKDIR /jbot
 
-ARG JBOT_VERSION
 RUN wget \
     -c $(wget -qO- https://api.github.com/repos/jagrosh/MusicBot/releases/latest \
             | jq -r .assets[].browser_download_url) \
