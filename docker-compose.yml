@@ -1,6 +1,8 @@
 services:
   jmusicbot:
-    build: .
+    build:
+      context: .
+      network: host
     command: ./jmusicbot.sh
     container_name: jmusicbot
     ports:
