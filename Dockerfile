@@ -1,4 +1,4 @@
-FROM alpine
+FROM alpine:latest
 
 RUN apk add --no-cache \
     envsubst \
@@ -7,9 +7,9 @@ RUN apk add --no-cache \
 
 WORKDIR /jbot
 
+ARG DOWNLOAD_URL
 RUN wget \
-    -c $(wget -qO- https://api.github.com/repos/jagrosh/MusicBot/releases/latest \
-            | jq -r .assets[].browser_download_url) \
+    -c ${DOWNLOAD_URL} \
     -O JMusicBot.jar
 
 COPY config.txt jmusicbot.sh ./

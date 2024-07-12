@@ -3,6 +3,8 @@ services:
     build:
       context: .
       network: host
+      args:
+        DOWNLOAD_URL: ${DOWNLOAD_URL}
     command: ./jmusicbot.sh
     container_name: jmusicbot
     ports:
